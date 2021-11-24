@@ -73,7 +73,7 @@
                           <li>Salary :  <span>${{ $job->price }}</span></li>
                       </ul>
                      <div class="apply-btn2">
-                        <a href="#" class="btn">Apply Now</a>
+                        <a href="{{ route('site.job.applay', $job->id) }}" class="btn">Apply Now</a>
                      </div>
                    </div>
                     <div class="post-details4  mb-50">

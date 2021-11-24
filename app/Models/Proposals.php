@@ -9,6 +9,10 @@ class Proposals extends Model
 {
     use HasFactory;
 
+    protected $table = 'proposals';
+
+    protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo(User::class);

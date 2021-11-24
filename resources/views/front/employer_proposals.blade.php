@@ -8,22 +8,25 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Your Approved Jobs') }}</div>
+                <div class="card-header">{{ __('Your proposals for') }} {{ $job->title }}</div>
 
                 <div class="card-body">
-                    @foreach ($jobs as $job)
+                    @foreach ($proposals as $prop)
                         <div class="card shadow mb-3">
                             <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h3>{{ $job->title }}  </h3>
-                                <a class="badge badge-primary px-3 py-1" href="{{ route('employer.job_proposals', $job->id) }}">Proposal Count = {{ $job->proposals_count }}</a>
+                                <h3>{{ $prop->user->name }}  </h3>
+                                <p>{{ $prop->content }}</p>
+                                <span>{{ $prop->duration }}</span> |
+                                <span>{{ $prop->price }}</span>
+                                <div class="mt-4">
+                                    <a class="btn" href="#" onclick="return confirm('fdsfasd')">Accept</a>
                                 </div>
-                                <p>{{ $job->description }}</p>
-                                <span>{{ $job->duration }}</span> |
-                                <span>{{ $job->price }}</span>
+
                             </div>
                         </div>
                     @endforeach
+
+                    {{ $proposals->links() }}
                 </div>
             </div>
         </div>

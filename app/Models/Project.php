@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
@@ -18,7 +19,7 @@ class Project extends Model
 
     public function proposals()
     {
-        return $this->hasMany(Proposal::class);
+        return $this->hasMany(Proposals::class);
     }
 
     public function skills()
