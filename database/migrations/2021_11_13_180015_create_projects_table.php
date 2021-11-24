@@ -21,7 +21,7 @@ class CreateProjectsTable extends Migration
                     ->nullOnDelete();
             $table->string('title');
             $table->text('description');
-            $table->enum('status', ['waiting-admin-approval', 'open', 'closed']);
+            $table->enum('status', ['waiting-admin-approval', 'open', 'closed'])->default('waiting-admin-approval');
             $table->string('duration');
             $table->string('price');
             $table->timestamps();

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Job board HTML-5 Template </title>
+         <title>@yield('title', config('app.name'))</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
             li.nav-item.dropdown a {
                 color: #252b60;
@@ -51,7 +52,7 @@
                         <div class="col-lg-3 col-md-2">
                             <!-- Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('assets/img/logo/logo.png') }}" alt=""></a>
+                                <a href="{{ route('site.index') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
@@ -60,8 +61,8 @@
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="job_listing.html">Find a Jobs </a></li>
+                                            <li><a class="{{ request()->routeIs('site.index') ? 'active' : '' }}" href="{{ route('site.index') }}">Home</a></li>
+                                            <li><a class="{{ request()->routeIs('site.find_jobs') ? 'active' : '' }}" href="{{ route('site.find_jobs') }}">Find a Jobs </a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="#">Page</a>
                                                 <ul class="submenu">
@@ -267,6 +268,9 @@
     </footer>
 
   <!-- JS here -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.userId = '{{ Auth::id() }}'</script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
@@ -293,7 +297,7 @@
 		<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 
         <!-- contact js -->
-        <script src="{{ asset('assets/js/contact.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/contact.js') }}"></script> --}}
         <script src="{{ asset('assets/js/jquery.form.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
         <script src="{{ asset('assets/js/mail-script.js') }}"></script>
@@ -302,6 +306,11 @@
 		<!-- Jquery Plugins, main Jquery -->
         <script src="{{ asset('assets/js/plugins.js') }}"></script>
         <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+
 
     </body>
 </html>
