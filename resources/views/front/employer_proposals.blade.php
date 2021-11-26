@@ -18,10 +18,12 @@
                                 <p>{{ $prop->content }}</p>
                                 <span>{{ $prop->duration }}</span> |
                                 <span>{{ $prop->price }}</span>
-                                <div class="mt-4">
-                                    <a class="btn" href="#" onclick="return confirm('fdsfasd')">Accept</a>
-                                </div>
+                                @if ($job->status != 'closed')
 
+                                    <div class="mt-4">
+                                        <a class="btn" href="{{ route('employer.accept_proposal', $prop->id) }}" onclick="return confirm('Are you sure?')">Accept</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach

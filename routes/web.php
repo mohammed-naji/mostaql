@@ -16,11 +16,17 @@ Route::get('/job/applay/{id}', [SiteController::class, 'job_applay'])->name('sit
 Route::post('/job/applay/{id}', [SiteController::class, 'job_applay_submit'])->middleware('auth');
 
 // Employer Routes
-Route::prefix('employer')->name('employer.')->middleware('auth')->group(function() {
+Route::prefix('client')->name('employer.')->middleware('auth')->group(function() {
     Route::get('post-job', [SiteController::class, 'post_job'])->name('post_job');
     Route::post('post-job', [SiteController::class, 'post_job_submit']);
     Route::get('jobs', [SiteController::class, 'jobs'])->name('jobs');
     Route::get('job/{id}/proposals', [SiteController::class, 'job_proposals'])->name('job_proposals');
+    Route::get('job/accept-proposal/{id}', [SiteController::class, 'accept_proposal'])->name('accept_proposal');
+
+    Route::get('messages', [SiteController::class, 'messages'])->name('messages');
+
+    Route::get('messages/{id}/show', [SiteController::class, 'message_show'])->name('message_show');
+    Route::post('messages/{id}/replay', [SiteController::class, 'message_replay'])->name('message_replay');
 });
 
 // Admin Routes
